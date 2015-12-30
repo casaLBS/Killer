@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "main_activity";
+    private TextView killerTextView;
+    private TextView policerTextView;
+    private TextView villigerTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        killerTextView = (TextView) findViewById(R.id.killerNum);
+        policerTextView = (TextView) findViewById(R.id.policerNum);
+        villigerTextView = (TextView) findViewById(R.id.villigerNum);
     }
 
     @Override
@@ -54,51 +60,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleAddVillagerNum(View view) {
-        TextView villigerTextView = (TextView) findViewById(R.id.villigerNum);
-        int villigerNum = Integer.parseInt(villigerTextView.getText().toString());
-        if(villigerNum < 8) {
-            villigerTextView.setText(String.valueOf(villigerNum + 1));
-        }
-
+        addNum(villigerTextView);
     }
 
     public void handleMinusVillagerNum(View view) {
-        TextView villigerTextView = (TextView) findViewById(R.id.villigerNum);
-        int villigerNum = Integer.parseInt(villigerTextView.getText().toString());
-        if(villigerNum > 0) {
-            villigerTextView.setText(String.valueOf(villigerNum - 1));
-        }
-    }
-
-    public void handleMinusPolicerNum(View view) {
-        TextView policerTextView = (TextView) findViewById(R.id.policerNum);
-        int villigerNum = Integer.parseInt(policerTextView.getText().toString());
-        if(villigerNum > 0) {
-            policerTextView.setText(String.valueOf(villigerNum - 1));
-        }
+        minusNum(villigerTextView);
     }
 
     public void handleAddPolicerNum(View view) {
-        TextView policerTextView = (TextView) findViewById(R.id.policerNum);
-        int villigerNum = Integer.parseInt(policerTextView.getText().toString());
-        if(villigerNum < 8) {
-            policerTextView.setText(String.valueOf(villigerNum + 1));
-        }
+        addNum(policerTextView);
     }
 
-    public void handleMinusKillerNum(View view) {
-        TextView killerTextView = (TextView) findViewById(R.id.killerNum);
-        int villigerNum = Integer.parseInt(killerTextView.getText().toString());
-        if(villigerNum > 0) {
-            killerTextView.setText(String.valueOf(villigerNum - 1));
-        }
+    public void handleMinusPolicerNum(View view) {
+        minusNum(policerTextView);
     }
 
     public void handleAddKillerNum(View view) {
-        TextView killerTextView = (TextView) findViewById(R.id.killerNum);
-        int villigerNum = Integer.parseInt(killerTextView.getText().toString());
+        addNum(killerTextView);
+    }
+
+    public void handleMinusKillerNum(View view) {
+        minusNum(killerTextView);
+    }
+
+    private void addNum(TextView view) {
+        int villigerNum = Integer.parseInt(view.getText().toString());
         if(villigerNum < 8) {
-            killerTextView.setText(String.valueOf(villigerNum + 1));
+            view.setText(String.valueOf(villigerNum + 1));
+        }
+    }
+
+    private void minusNum(TextView view) {
+        int villigerNum = Integer.parseInt(view.getText().toString());
+        if(villigerNum > 0) {
+            view.setText(String.valueOf(villigerNum - 1));
         }
     }
 }
