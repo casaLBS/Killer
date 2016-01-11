@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.xuzhang.killer.GameActivity"
+    tools:showIn="@layout/activity_game"
+    android:background="@drawable/bg_img">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/judgeNumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="法官数量"
+            android:allowUndo="false" />
+
+        <TextView
+            android:id="@+id/villigerNumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平民数量"
+            android:allowUndo="false" />
+
+        <TextView
+            android:id="@+id/killerNumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="杀手数量"
+            android:allowUndo="false" />
+
+        <TextView
+            android:id="@+id/policerNumTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="警察数量"
+            android:allowUndo="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="开始拍照"/>
+
+    </LinearLayout>
+</RelativeLayout>

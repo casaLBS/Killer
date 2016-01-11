@@ -1,14 +1,18 @@
 package com.example.xuzhang.killer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.xuzhang.killer.domain.Roles;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "main_activity";
@@ -84,16 +88,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNum(TextView view) {
-        int villigerNum = Integer.parseInt(view.getText().toString());
+        int villigerNum = getNumFromView(view);
         if(villigerNum < 8) {
             view.setText(String.valueOf(villigerNum + 1));
         }
     }
 
     private void minusNum(TextView view) {
-        int villigerNum = Integer.parseInt(view.getText().toString());
+        int villigerNum = getNumFromView(view);
         if(villigerNum > 0) {
             view.setText(String.valueOf(villigerNum - 1));
         }
+    }
+
+    private int getNumFromView(TextView view) {
+        return Integer.parseInt(view.getText().toString());
+    }
+
+    public void startGame(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+
+        intent.putExtra("killerNum", getNumFromView(killerTextView));
+        intent.putExtra("policerNum", getNumFromView(policerTextView));
+        intent.putExtra("villigerNum", getNumFromView(villigerTextView));
+        intent.putExtra("judgeNum", 1);
+
+        startActivity(intent);
     }
 }
